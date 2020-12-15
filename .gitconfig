@@ -1,0 +1,11 @@
+[alias]
+	alias = config --get-regexp ^alias
+	co = checkout
+	br = branch
+	ci = commit
+	st = status -s
+	tree = log --oneline --graph --all
+	olog = log --oneline
+[user]
+	name = Devin Sather
+	email = devin.sather@outlook.com

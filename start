@@ -1,0 +1,14 @@
+#!/bin/bash
+shopt -s dotglob
+for fn in $HOME/*; do
+  if [ $fn = "$HOME/.vim" ] || [ $fn = "$HOME/.gitconfig" ]; then
+    rm -rf $fn
+  fi
+done
+cp -r $HOME/configbackup/.vim ~
+exit1=$?
+cp $HOME/configbackup/.gitconfig ~
+exit2=$?
+if [ $exit1 = '0' -a $exit2 = '0' ]; then
+  echo 'config files succesfully replaced'
+fi

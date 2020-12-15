@@ -1,0 +1,18 @@
+let mapleader=" "
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q!<cr>
+nnoremap <leader>z :wq<cr>
+inoremap cc <esc> 
+
+syntax on
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set background=dark
+set smartindent 
+set autoindent
+set showcmd
+set incsearch
+set vb
+
+autocmd FileType make setlocal shiftwidth=4 tabstop=4 noexpandtab
