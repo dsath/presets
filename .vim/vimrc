@@ -2,7 +2,7 @@ let mapleader=" "
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q!<cr>
 nnoremap <leader>z :wq<cr>
-inoremap cc <esc> 
+inoremap cc <C-c>
 
 syntax on
 set tabstop=2
@@ -13,6 +13,13 @@ set smartindent
 set autoindent
 set showcmd
 set incsearch
-set vb
+set visualbell
 
 autocmd FileType make setlocal shiftwidth=4 tabstop=4 noexpandtab
+autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
+autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
+autocmd BufNewFile *.css 0r ~/.vim/templates/skeleton.css
+autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
+
+
