@@ -22,4 +22,8 @@ autocmd BufNewFile *.css 0r ~/.vim/templates/skeleton.css
 autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
 autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
 
+autocmd FileType html setlocal commentstring=<!--\ %s\ -->
+autocmd FileType handlebars setlocal commentstring={{!--\ %s\ --}}
 
+"set filetypes"
+au BufRead,BufNewFile *.handlebars setfiletype handlebars
