@@ -24,6 +24,7 @@ autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
 
 autocmd FileType html setlocal commentstring=<!--\ %s\ -->
 autocmd FileType handlebars setlocal commentstring={{!--\ %s\ --}}
+autocmd FileType python setlocal commentstring=#\ %s
 
 "set filetypes"
 au BufRead,BufNewFile *.handlebars setfiletype handlebars
