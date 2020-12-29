@@ -4,7 +4,9 @@ nnoremap <leader>q :q!<cr>
 nnoremap <leader>z :wq<cr>
 inoremap cc <C-c>
 
+set nocompatible
 syntax on
+colorscheme desert
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -28,3 +30,10 @@ autocmd FileType python setlocal commentstring=#\ %s
 
 "set filetypes"
 au BufRead,BufNewFile *.handlebars setfiletype handlebars
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
+call plug#end()

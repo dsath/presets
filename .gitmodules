@@ -1,6 +1,0 @@
-[submodule ".vim/plugin/vim-commentary"]
-	path = .vim/plugin/vim-commentary
-	url = git@github.com:tpope/vim-commentary.git
-[submodule ".vim/plugin/vim-surround"]
-	path = .vim/plugin/vim-surround
-	url = git@github.com:tpope/vim-surround.git
