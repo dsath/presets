@@ -1,9 +1,17 @@
 set nocompatible
 let mapleader=" "
+
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q!<cr>
 nnoremap <leader>z :wq<cr>
+nnoremap <C-w>s <C-w>n
+nnoremap <leader>o o<esc>k
+nnoremap <leader>O O<esc>j
+nnoremap <F1> :!node app.js
+
 inoremap cc <C-c>
+inoremap {<CR> {<CR>}<esc>ko
+inoremap {)<CR> {<CR>})<esc>ko
 
 syntax on
 colorscheme desert
@@ -51,4 +59,4 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_checkers = ['eslint']
