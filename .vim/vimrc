@@ -1,5 +1,6 @@
 set nocompatible
-let mapleader=" "
+let mapleader=' '
+colorscheme industry
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q!<cr>
@@ -7,14 +8,15 @@ nnoremap <leader>z :wq<cr>
 nnoremap <C-w>s <C-w>n
 nnoremap <leader>o o<esc>k
 nnoremap <leader>O O<esc>j
-nnoremap <F1> :!node app.js
 
 inoremap cc <C-c>
 inoremap {<CR> {<CR>}<esc>ko
 inoremap {)<CR> {<CR>})<esc>ko
+imap ,, <C-y>, 
+
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/': '%%'
 
 syntax on
-colorscheme desert
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -27,19 +29,9 @@ set visualbell
 set laststatus=2
 set noshowmode
 
-autocmd FileType make setlocal shiftwidth=4 tabstop=4 noexpandtab
-autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
-autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
-autocmd BufNewFile *.css 0r ~/.vim/templates/skeleton.css
-autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
-autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
-
 autocmd FileType html setlocal commentstring=<!--\ %s\ -->
 autocmd FileType handlebars setlocal commentstring={{!--\ %s\ --}}
 autocmd FileType python setlocal commentstring=#\ %s
-
-"set filetypes"
-au BufRead,BufNewFile *.handlebars setfiletype handlebars
 
 call plug#begin('~/.vim/plugged')
 
@@ -48,6 +40,7 @@ Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -60,3 +53,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " let g:syntastic_javascript_checkers = ['eslint']
+
+" autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
+" autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
+" autocmd BufNewFile *.css 0r ~/.vim/templates/skeleton.css
+" autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+" autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
+
