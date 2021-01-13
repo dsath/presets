@@ -5,7 +5,6 @@ colorscheme industry
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q!<cr>
 nnoremap <leader>z :wq<cr>
-nnoremap <C-w>s <C-w>n
 nnoremap <leader>o o<esc>k
 nnoremap <leader>O O<esc>j
 
