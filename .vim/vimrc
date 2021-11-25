@@ -1,18 +1,28 @@
 set nocompatible
-filetype plugin on
+filetype plugin indent on
 let mapleader=' '
 colorscheme industry
 
+" Writing and exiting files remaps
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q!<cr>
 nnoremap <leader>z :wq<cr>
 
+" Bracket autocomplete
 inoremap {<CR> {<CR>}<esc>ko
+" inoremap (<CR> (<CR>)<esc>ko
 inoremap {)<CR> {<CR>})<esc>ko
-imap ,, <C-y>, 
 
+" Emmet exection command mapping
+imap ,, <C-y>,
+
+" Use %% to get your current path
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/': '%%'
 
+" Sets symbols to represent whitespace
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
+
+" Common settings
 syntax on
 set tabstop=2
 set shiftwidth=2
@@ -22,17 +32,39 @@ set smartindent
 set autoindent
 set showcmd
 set incsearch
+
+" Turns screen flash on and disables beeping
 set visualbell
+
+" Lightline dependencies
 set laststatus=2
 set noshowmode
+
+" Doesn't search node_modules directory when using find
 set wildignore=/**/node_modules/**
 
-" disable automatic comment insertion
+" Disable automatic comment insertion
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Set default comments for certain filetypes
 autocmd FileType html setlocal commentstring=<!--\ %s\ -->
 autocmd FileType handlebars setlocal commentstring={{!--\ %s\ --}}
 autocmd FileType python setlocal commentstring=#\ %s
+
+" Custom emmet settings
+let g:user_emmet_settings = {
+\    'javascript': {
+\        'extends': 'html',
+\        'attribute_name': {'class': 'className', 'for': 'htmlFor'},
+\        'empty_element_suffix': ' />',
+\        'snippets' : {
+\            'jq' : "\\$(function() {\n\t${cursor}${child}\n});",
+\            'jq:each' : "\\$.each(arr, function(index, item)\n\t${child}\n});",
+\            'fn' : "(function() {\n\t${cursor}\n})();",
+\            'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
+\        },
+\    },
+\}
 
 call plug#begin('~/.vim/plugged')
 
@@ -46,13 +78,13 @@ Plug 'mattn/emmet-vim'
 call plug#end()
 
 "syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 " let g:syntastic_javascript_checkers = ['eslint']
 
 " autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
