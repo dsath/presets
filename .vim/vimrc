@@ -52,18 +52,42 @@ autocmd FileType handlebars setlocal commentstring={{!--\ %s\ --}}
 autocmd FileType python setlocal commentstring=#\ %s
 
 " Custom emmet settings
+" Snippets special variables: | (cursor placement), ${cursor}, ${<variable>}, ${child}, otherwise code is placed as-is
 let g:user_emmet_settings = {
-\    'javascript': {
-\        'extends': 'html',
-\        'attribute_name': {'class': 'className', 'for': 'htmlFor'},
-\        'empty_element_suffix': ' />',
-\        'snippets' : {
-\            'jq' : "\\$(function() {\n\t${cursor}${child}\n});",
-\            'jq:each' : "\\$.each(arr, function(index, item)\n\t${child}\n});",
-\            'fn' : "(function() {\n\t${cursor}\n})();",
-\            'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
-\        },
+\  'variables': {'lang': 'en', 'name': 'foo'},
+\  'javascript': {
+\      'snippets' : {
+\          'jq' : "\\$(function() {\n\t${cursor}${child}\n});",
+\          'jq:each' : "\\$.each(arr, function(index, item)\n\t${child}\n});",
+\          'fn' : "(function() {\n\t${cursor}\n})();",
+\          'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
+\          'for': "for (let i = 0; i < |; i++) {\n\n}",
+\          'for:i': "for (let i = 0; i < |; i++) {\n\n}",
+\          'for:y': "for (let y = 0; y < |; y++) {\n\n}",
+\          'for:p': "for (let p = 0; p < |; p++) {\n\n}",
+\          'swap': "function swap(array, i, y) {\n\tlet temp = array[i];\n\tarray[i] = array[y]\n\tarray[y] = temp\n}",
+\          'test': "//////////\n// |\n//\n//\n//\n//\n//////////\nconst {test} = require('./test/test.js');\ntest(fn)\n\nfunction fn() {\n\n};",
+\          'rafce' : "import React from 'react'\n\nconst ${name} = () => {\n\treturn(\n\t\t<div>\n\t\t\t|\n\t\t</div>\n\t)\n}\n\nexport default ${name}"
+\      },
+\  },
+\  'html': {
+\    'default_attributes': {
+\      'option': {'value': v:null},
+\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
 \    },
+\    'snippets': {
+\      'html:5': "<!DOCTYPE html>\n"
+\              ."<html lang=\"${lang}\">\n"
+\              ."<head>\n"
+\              ."\t<meta charset=\"${charset}\">\n"
+\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+\              ."\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
+\              ."\t<title></title>\n"
+\              ."</head>\n"
+\              ."<body>\n\t${child}|\n</body>\n"
+\              ."</html>",
+\    },
+\  },
 \}
 
 call plug#begin('~/.vim/plugged')
